@@ -44,7 +44,7 @@ export default function useForm() {
 
 
         if(stack.length > 1) {
-           setResult('error')
+           setResult("Le calcule n'est pas correct")
         }else {
            setResult(stack[0])
         }
