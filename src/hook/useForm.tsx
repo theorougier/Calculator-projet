@@ -5,13 +5,14 @@ export default function useForm() {
     const [states, setStates] = useState({
         calcule:'',
     })
+    const [result, setResult] = useState('')
 
     const handleChange = (
         e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
       ) => {
         setStates({
           ...states,
-          calcule: e.target.value.trim(),
+          calcule: e.target.value,
         });
     };
       
@@ -41,14 +42,13 @@ export default function useForm() {
           }
         }
 
+
         if(stack.length > 1) {
-            return 'error'
+           setResult('error')
         }else {
-            return stack[0]
+           setResult(stack[0])
         }
       }
-
-    const [result, setResult] = useState(reversePolish(states.calcule))
 
       
       return {

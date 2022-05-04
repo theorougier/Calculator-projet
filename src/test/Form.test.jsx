@@ -1,6 +1,7 @@
 import React from "react";
-import useForm from "../../hook/useForm";
-import Input from "./Input";
+import useForm from "../hook/useForm";
+import Input from "../component/commons/Input";
+import { render, fireEvent, screen } from '@testing-library/react';
 
 export default function Form() {
     const {states,result, reversePolish, handleChange} = useForm()
@@ -29,3 +30,23 @@ export default function Form() {
         </>
     )
 }
+
+const setup = () => {
+    const utils = render(<Form/>)
+    const input = utils.getByLabelText('Calculette')
+    return {
+        input,
+        ...utils,
+    }
+}
+
+
+it('Check if text was change after calcule', () => {
+    const {input} = setup()
+    screen.getByText('Comment ça marche?')
+    screen.getByText('Entrez votre formule Reverse Polish Notation. Exemple 5 1 2 + 4 * + 3 -. Puis clickez sur << Calculez >>')
+    fireEvent.change(input, {target: {value: '5 1 2 + 4 * + 3 -'}})
+    fireEvent.click(document.querySelector('button'))
+    screen.getByText("Votre résultat")
+    screen.getByText("14")
+});

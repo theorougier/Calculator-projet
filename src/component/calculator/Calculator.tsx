@@ -3,7 +3,10 @@ import Form from "../commons/Form";
 
 export default function Caculator() {
     return (
-        <section>
+        <section className="calculator-container">
+            <h1>
+                Calculator
+            </h1>
             <div>
                 <Form/>
             </div>

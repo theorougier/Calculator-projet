@@ -1,0 +1,10 @@
+@import "./style/Calculator.css";
+@import "./style/Form.css";
+
+.App {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+}
